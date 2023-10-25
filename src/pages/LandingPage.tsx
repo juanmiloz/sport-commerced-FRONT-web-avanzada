@@ -9,7 +9,7 @@ function LandingPage() {
                     <a className="ml-4 font-medium text-xl font-serif">{APP_NAME}</a>
                 </div>
                 <div className="navbar-end mr-3">
-                    <Link to={'/register'}><button className="btn bg-app-400 border-0 rounded-3xl hover:bg-app-300 ">Sign in</button></Link>
+                    <Link to={'/signIn'}><button className="btn bg-app-400 border-0 rounded-3xl hover:bg-app-300 ">Sign in</button></Link>
                 </div>
             </div>
             <div className={'relative'}>
@@ -39,7 +39,7 @@ function LandingPage() {
                             className="btn rounded-3xl mt-4 font-bold bg-app-200 border-0 text-white hover:bg-app-300">Registrarse
                         </button>
                     </Link>
-                    <Link to={'/'}>
+                    <Link to={'/sport-commerce/home'}>
                         <button
                             className="btn rounded-3xl mt-4 font-bold bg-app-100 border-0 text-white hover:bg-app-300">Ver últimas ofertas
                         </button>
