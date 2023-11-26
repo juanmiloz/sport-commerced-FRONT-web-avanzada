@@ -6,10 +6,10 @@ function LandingPage() {
         <>
             <div className="navbar bg-app-200">
                 <div className="navbar-start text-app-100">
-                    <a className="ml-4 font-medium text-xl font-serif">{APP_NAME}</a>
+                    <a className="ml-4 font-medium text-xl text-white">{APP_NAME}</a>
                 </div>
                 <div className="navbar-end mr-3">
-                    <Link to={'/signIn'}><button className="btn bg-app-400 border-0 rounded-3xl hover:bg-app-300 ">Sign in</button></Link>
+                    <Link to={'/signIn'}><button className="btn bg-app-600 border-0 rounded-3xl hover:bg-app-300 text-white">Sign in</button></Link>
                 </div>
             </div>
             <div className={'relative'}>
@@ -46,7 +46,7 @@ function LandingPage() {
                     </Link>
                 </div>
                 <div className={"md:col-span-4 flex flex-col items-center justify-center"}>
-                    <img src={'../images/log&description.png'}/>
+                    <img src={'../images/svg/sport-commerce.svg'}/>
                 </div>
             </div>
             <div className={'bg-app-100'}>
@@ -81,9 +81,7 @@ function LandingPage() {
                             <li className={'ml-5'}>Tratamiento de datos</li>
                         </ul>
                     </div>
-                    <div className={'md:col-span-2 flex items-center justify-center'}>
-                        <img src={'../images/logo.png'}/>
-                    </div>
+
                 </div>
             </div>
         </>

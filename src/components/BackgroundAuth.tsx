@@ -8,8 +8,8 @@ interface Props {
 
 const BackgroundAuth: React.FC<Props> = ({children, typeAuth}) => {
     return (
-        <div className={'w-screen h-screen bg-app-200 flex items-center justify-center relative'}>
-            <Link to={"/landing"}><img src={'/images/log&description.png'} className={'absolute left-2 top-2 w-20'} alt={'logo'}/></Link>
+        <div className={'w-screen h-screen bg-gradient-to-r from-black to-app-600 flex items-center justify-center relative'}>
+            <Link to={"/landing"}><img src={'/images/svg/sport-commerce.svg'} className={'absolute left-2 top-2 w-20'} alt={'logo'}/></Link>
             <div className={'text-white md:absolute sm:static top-0 right-0 flex py-2 px-4'}>
                 <p>{(typeAuth === "SignIn") ? 'Don\'t have an account? ' : (typeAuth === "Register") ? 'Do you already have an account? ' : ''}</p>
                 <Link to={(typeAuth === "SignIn") ? '/register' : (typeAuth === "Register") ? '/signIn' : ''}>

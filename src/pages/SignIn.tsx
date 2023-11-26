@@ -16,7 +16,6 @@ const SignIn = () => {
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-
         const {name, value} = e.target;
         setFormData({
             ...formData,
