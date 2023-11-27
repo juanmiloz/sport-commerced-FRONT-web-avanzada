@@ -1,0 +1,28 @@
+
+.star-rating {
+    top: 5px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    color: #f1c40f; 
+  }
+  
+  .star {
+    font-size: 20px;
+  }
+  
+  .rating {
+    margin-left: 4px;
+    font-size: 16px;
+  }
+  .heart-button {
+    font-size: 1.5rem;
+    color: #333; /* Color por defecto del corazón */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .heart-button.liked {
+    color: red; /* Color del corazón cuando está "gustado" */
+  }

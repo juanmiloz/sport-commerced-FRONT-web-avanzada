@@ -14,7 +14,9 @@ function LandingPage() {
             </div>
             <div className={'relative'}>
                 <img src={"./images/wallpaperflare 1.png"} className={"w-full"}/>
-                <img src={"./images/svg/wave.svg"}
+
+                <img src={ (window.matchMedia('(prefers-color-scheme: dark)').matches)?"./images/svg/wave1.svg" :"./images/svg/wave.svg"  }
+
                      className={'w-full fill-current text-white absolute bottom-0 left-0'}/>
             </div>
             <div className={'grid grid-cols-1 md:grid-cols-10 gap-5 m-4 p-4'}>
