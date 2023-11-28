@@ -6,7 +6,7 @@ import shoppingCarReducer from "../../features/shoppingCar/shoppingCarSlice.ts";
 export const store = configureStore({
     reducer:{
         auth: authReducer,
-        product: productReducer
-        shoppingCar: shoppingCarReducer,
+        product: productReducer,
+        shoppingCar: shoppingCarReducer
     }
 })
