@@ -26,7 +26,7 @@ const NavBarCustom = () => {
                         <ul tabIndex={0}
                             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to={'/sport-commerce/home'}>Homepage</Link></li>
-                            <li><Link to={'test'}>test</Link></li>
+                            <li><Link to={'/sport-commerce/product-view'}>test</Link></li>
                             <li><Link to={'/landing'}>Landing</Link></li>
                         </ul>
                     </div>
@@ -44,9 +44,9 @@ const NavBarCustom = () => {
                     </button>
                     {(user !== null) ?
                         <button className="btn btn-ghost btn-circle">
-                            <div className="indicator">
+                            <label className="indicator drawer-button cursor-pointer" htmlFor="my-drawer-4">
                                 <MdShoppingCartCheckout color={'white'} className={'h-7 w-7'}/>
-                            </div>
+                            </label>
                         </button>
                         :
                         <></>

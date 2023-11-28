@@ -6,6 +6,8 @@ import {CRUDService, PRODUCTS} from "../config/axios.ts";
 import {setProductState} from "../features/product/productSlice.ts";
 import SimilarProductCard from "../components/SimilarProductsCard.tsx";
 
+import {insertProduct} from "../features/shoppingCar/shoppingCarSlice.ts";
+import Swal from "sweetalert2";
 const ProductView = () => {
 
     const [product, setProduct] = useState<ProductInterfaces>();
@@ -36,6 +38,17 @@ const ProductView = () => {
 
     if (!product) return (<div>No hay producto</div>)
 
+    const onAddToCart = (product :ProductInterfaces) => {
+        dispatch(insertProduct(product))
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Tu producto ha sido añadido al carrito!",
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }
+
     return (
         <div className="flex flex-col p-6 bg-white rounded-lg shadow-md">
         <div className="flex">
@@ -54,7 +67,7 @@ const ProductView = () => {
             </div>
             <button
               className="bg-app-700 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
-              onClick={() => alert(`¡Has añadido ${product.name} a tu carrito!`)}>
+              onClick={() => onAddToCart(testjson)}>
               Añadir al carrito
             </button>
           </div>
