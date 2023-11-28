@@ -22,7 +22,7 @@ const ProductCard: React.FC<Props> = ({product, loadProduct}) => {
                     <h2 className="card-title">{product.name}</h2>
                     <p className={'line-clamp-2'}>{product.description}</p>
                     <div className="card-actions justify-end">
-                        <h3 className={'font-semibold text-xl'}>$ {product.price}</h3>
+                        <h3 className={'font-semibold text-lg'}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(product.price)}</h3>
                     </div>
                 </div>
             </div>

@@ -12,16 +12,12 @@ export interface ProductInterfaces {
     brand: BrandInterface
 }
 
-export interface ProductState  {
-    value:{
-        product_id: number
-        name: string,
-        subtitle: string,
-        description: string,
-        price: number,
-        calification: number,
-        brand_id: number,
-        image_url: string,
-        brand: BrandInterface
-    } | null;
+export interface ProductState {
+    value: ProductInterfaces | null;
+}
+
+export interface StateSchemaProduct {
+    product: {
+        value: ProductInterfaces | null;
+    }
 }

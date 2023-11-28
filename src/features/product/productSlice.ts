@@ -10,7 +10,7 @@ export const productSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        insertProduct: (state, action) => {
+        setProductState: (state, action) => {
             state.value = {
                 product_id: action.payload.product_id,
                 name: action.payload.name,
@@ -23,12 +23,12 @@ export const productSlice = createSlice({
                 brand: action.payload.brand,
             }
         },
-        deleteProduct: (state) => {
+        dropProductState: (state) => {
             state.value = null
         },
     }
 })
 
-export const {insertProduct, deleteProduct}= productSlice.actions
+export const {setProductState, dropProductState}= productSlice.actions
 
 export default productSlice.reducer

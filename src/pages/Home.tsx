@@ -4,11 +4,14 @@ import {useEffect, useState} from "react";
 import {ProductInterfaces} from "../interfaces/Product/product.interfaces.ts";
 import {CRUDService, PRODUCTS} from "../config/axios.ts";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setProductState} from "../features/product/productSlice.ts";
 
 const Home = () => {
 
     const [products, setProducts] = useState<ProductInterfaces[]>();
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getProducts()
@@ -22,6 +25,7 @@ const Home = () => {
     }
 
     const loadProduct =  async (product:ProductInterfaces) =>{
+        dispatch(setProductState(product))
         navigate('../product-view')
     }
 
