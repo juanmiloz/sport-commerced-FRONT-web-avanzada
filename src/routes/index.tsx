@@ -16,6 +16,7 @@ import {CheckoutWrapper} from "../components/CheckoutWrapper.tsx";
 import RequireAuthAdmin from "../components/RequireAuthAdmin.tsx";
 import EditProductPage from "../pages/EditProductPage.tsx";
 import EditUserPage from "../pages/EditUserPage.tsx";
+import EditBrandPage from "../pages/EditBrandPage.tsx";
 
 function Router() {
     return (<BrowserRouter>
@@ -38,6 +39,7 @@ function Router() {
                 <Route path={'products'} element={<ProductManagerView/>}/>
                 <Route path={'products/:id'} element={<EditProductPage/>}/>
                 <Route path={'brands'} element={<BrandManagerView/>}/>
+                <Route path={'brands/:id'} element={<EditBrandPage/>}/>
             </Route>
             <Route path={'/*'} element={<NotFound/>}/>
         </Routes>

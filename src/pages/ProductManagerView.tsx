@@ -26,7 +26,7 @@ const ProductManagerView = () => {
 
     const getProducts = () => {
         CRUDService.getAll(PRODUCTS).then((products) => {
-            products.sort((a:ProductInterfaces, b:ProductInterfaces) => a.product_id - b.product_id)
+            products.sort((a: ProductInterfaces, b: ProductInterfaces) => a.product_id - b.product_id)
             setProducts(products)
         }).catch((e) => console.log(e))
     }
@@ -160,7 +160,8 @@ const ProductManagerView = () => {
             </div>
             <div className={'flex justify-center'}>
                 {/* The button to open modal */}
-                <a href="#my_modal_8" className="btn bg-app-100 text-white border-0 rounded-3xl" onClick={getAllBrands}>open modal</a>
+                <a href="#my_modal_8" className="btn btn-primary bg-app-100 text-white border-0 rounded-lg"
+                   onClick={getAllBrands}>open modal</a>
                 {/* Put this part before </body> tag */}
                 <div className="modal" role="dialog" id="my_modal_8">
                     <div className="modal-box">
