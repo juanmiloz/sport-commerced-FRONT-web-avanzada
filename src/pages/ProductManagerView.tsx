@@ -27,7 +27,7 @@ const ProductManagerView = () => {
     const getProducts = () => {
         CRUDService.getAll(PRODUCTS).then((products) => {
             setProducts(products)
-        })
+        }).catch((e) => console.log(e))
     }
 
     const deleteProduct = (productId: number) => {
@@ -54,7 +54,7 @@ const ProductManagerView = () => {
     }
 
     const updateProduct = (product_id: number) => {
-        navigate("./"+product_id)
+        navigate("./" + product_id)
     }
 
     const getAllBrands = () => {
@@ -74,7 +74,7 @@ const ProductManagerView = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         CRUDService.post(PRODUCTS, formData).then((res) => {
-            if(res.status === 201){
+            if (res.status === 201) {
                 Swal.fire({
                     icon: "success",
                     title: "Your product has been saved",
@@ -147,7 +147,9 @@ const ProductManagerView = () => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button className="btn bg-app-200 btn-xs text-white" onClick={() => updateProduct(product.product_id)}>edit</button>
+                                    <button className="btn bg-app-200 btn-xs text-white"
+                                            onClick={() => updateProduct(product.product_id)}>edit
+                                    </button>
                                 </td>
                             </tr>
                         )}
@@ -156,15 +158,12 @@ const ProductManagerView = () => {
                 </div>
             </div>
             <div className={'flex justify-center'}>
-                <label htmlFor="my_modal_6"
-                       className="btn bg-app-100 text-white border-0 my-5 rounded-3xl hover:bg-app-300"
-                       onClick={getAllBrands}>Crear nuevo producto</label>
-
+                {/* The button to open modal */}
+                <a href="#my_modal_8" className="btn bg-app-100 text-white border-0 rounded-3xl" onClick={getAllBrands}>open modal</a>
                 {/* Put this part before </body> tag */}
-                <input type="checkbox" id="my_modal_6" className="modal-toggle"/>
-                <div className="modal" role="dialog">
+                <div className="modal" role="dialog" id="my_modal_8">
                     <div className="modal-box">
-                        <h3 className="font-bold text-lg">Nuevo Producto</h3>
+                        <h3 className="font-bold text-lg">New Product!</h3>
                         <form onSubmit={handleSubmit}>
                             <div className={'grid grid-cols-4 gap-4 my-3'}>
                                 <input type="text" placeholder="Name" name={'name'} onChange={handleChange}
@@ -192,18 +191,17 @@ const ProductManagerView = () => {
                             </div>
                             <input type="text" placeholder="Image url" name={'image_url'} onChange={handleChange}
                                    className="input input-bordered w-full "/>
-
-                            <div className="modal-action">
-                                <button type={'submit'}>
-                                    <label
-                                        htmlFor="my_modal_6"
-                                        className="btn bg-app-300 text-white border-0 rounded-3xl hover:bg-app-300">create!</label>
+                            <div className="modal-action flex gap-x-4">
+                                <button type={'submit'}
+                                        className="btn bg-app-300 text-white border-0 rounded-3xl hover:bg-app-300">
+                                    create
                                 </button>
+                                <a href="#" className="btn btn-error text-white border-0 rounded-3xl">Close!</a>
                             </div>
                         </form>
+
                     </div>
                 </div>
-                {/*<button className={'btn bg-app-100 text-white border-0 my-5 rounded-3xl hover:bg-app-300'}>Crear nuevo producto</button>*/}
             </div>
         </div>
     );

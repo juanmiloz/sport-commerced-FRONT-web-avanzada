@@ -28,6 +28,7 @@ const SignIn = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
         axios.post('auth/login', formData).then((res) => {
+            console.log('peticion')
             if (res.status === 200) {
                 const payload: JwtPayload = jwtDecode(res.data.access_token)
                 const loginInfo = {
@@ -42,6 +43,7 @@ const SignIn = () => {
                 }
             }
         }).catch((e) => {
+            console.log(e)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

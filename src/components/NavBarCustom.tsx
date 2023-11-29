@@ -6,7 +6,7 @@ import {StateSchema} from "../interfaces/Auth/auth.interfaces.ts";
 
 const NavBarCustom = () => {
 
-    const user = useSelector((state: StateSchema) => state.auth.value)
+    const user = useSelector((state: StateSchema) => state.authState.value)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

@@ -10,7 +10,7 @@ interface Props {
 const RequireAuthAdmin: React.FC<Props> = ({children}) => {
 
     const location = useLocation();
-    const user: UserState | null = useSelector((state: StateSchema) => state.auth.value)
+    const user: UserState | null = useSelector((state: StateSchema) => state.authState.value)
     if (user === null || user.role !== "superadmin") {
         return (<Navigate to={"/landing"} state={{from: location}} replace/>);
     }

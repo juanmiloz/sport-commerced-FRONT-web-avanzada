@@ -20,7 +20,7 @@ export interface ShoppingCarState  {
 }
 
 export interface StateSchema  {
-    shoppingCar: {
+    shoppingCarState: {
         value:{
             products: ShoppingCarProductInterface[]
             total: number

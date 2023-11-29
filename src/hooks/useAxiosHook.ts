@@ -22,7 +22,7 @@ const useAxiosHook = () => {
 
     const getHeaderConfig = () => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const userInfo = useSelector((state: StateSchema) => state.auth.value)
+        const userInfo = useSelector((state: StateSchema) => state.authState.value)
 
         const config:HeaderInterface = {
             headers: {Authorization: 'Bearer ' + userInfo?.access_token}

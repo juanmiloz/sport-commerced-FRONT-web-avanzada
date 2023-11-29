@@ -4,12 +4,12 @@ export interface UserState {
     access_token: string;
 }
 
-export interface AuthState  {
+export interface AuthState {
     value: UserState | null;
 }
 
-export interface StateSchema  {
-    auth: AuthState
+export interface StateSchema {
+    authState: AuthState
 }
 
 export interface JwtPayload {

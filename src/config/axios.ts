@@ -19,8 +19,8 @@ export const injectStore = _store => {
 }
 
 instance.interceptors.request.use(config => {
-    if(store.getState().auth.value !== null){
-        config.headers.authorization = store.getState().auth.value.access_token
+    if(store.getState().authState.value !== null){
+        config.headers.authorization = store.getState().authState.value.access_token
     }
     return config
 })
@@ -31,6 +31,7 @@ export class CRUDService {
     }
 
     static getOne(serviceRoute: string, itemId: string) {
+        console.log('sale2')
         const url = serviceRoute + '/' + itemId
 
         return instance.get(

@@ -15,8 +15,8 @@ interface Props {
 }
 
 const ShoppingCar: React.FC<Props> = ({children}) => {
-    const user = useSelector((state: StateSchema) => state.auth.value)
-    const {products, total} = useSelector((state: ShoppingCarStateSchema) => state.shoppingCar.value)
+    const user = useSelector((state: StateSchema) => state.authState.value)
+    const {products, total} = useSelector((state: ShoppingCarStateSchema) => state.shoppingCarState.value)
 
 
     const dispatch = useDispatch()
