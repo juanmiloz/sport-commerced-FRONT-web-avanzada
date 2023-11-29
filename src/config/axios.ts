@@ -4,6 +4,7 @@ import {ToolkitStore} from "@reduxjs/toolkit/dist/configureStore";
 export const LOGIN: string = "auth/login"
 export const SIGN_UP: string = "auth/signUp"
 export const PRODUCTS: string = "products"
+export const USERS: string = "users"
 export const BRANDS: string = "brands"
 export const REVIEWS: string = "reviews"
 

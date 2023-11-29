@@ -62,7 +62,7 @@ const EditProductPage = () => {
                         title: "Your product has been updated",
                         showConfirmButton: false,
                         timer: 2000
-                    }).then(() => navigate('./'));
+                    }).then(() => navigate('/admin/products'));
                 }
             }).catch((e) => {
                 console.log(e)
