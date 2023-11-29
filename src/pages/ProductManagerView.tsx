@@ -26,6 +26,7 @@ const ProductManagerView = () => {
 
     const getProducts = () => {
         CRUDService.getAll(PRODUCTS).then((products) => {
+            products.sort((a:ProductInterfaces, b:ProductInterfaces) => a.product_id - b.product_id)
             setProducts(products)
         }).catch((e) => console.log(e))
     }
