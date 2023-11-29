@@ -1,17 +1,21 @@
+export interface UserState {
+    username: string;
+    role: string,
+    access_token: string;
+}
+
 export interface AuthState  {
-    value:{
-        username: string;
-        password: string;
-        access_token: string;
-    } | null;
+    value: UserState | null;
 }
 
 export interface StateSchema  {
-    auth: {
-        value:{
-            username: string;
-            password: string;
-            access_token: string;
-        } | null;
-    }
+    auth: AuthState
+}
+
+export interface JwtPayload {
+    username: string;
+    user_id: string;
+    role: string;
+    iat: string;
+    exp: string;
 }

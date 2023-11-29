@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 import {useDispatch} from "react-redux";
 import {login} from "../features/auth/authSlice.ts";
+import {jwtDecode} from "jwt-decode";
+import {JwtPayload} from "../interfaces/Auth/auth.interfaces.ts";
 
 const SignIn = () => {
 
@@ -27,12 +29,17 @@ const SignIn = () => {
         e.preventDefault()
         axios.post('auth/login', formData).then((res) => {
             if (res.status === 200) {
+                const payload: JwtPayload = jwtDecode(res.data.access_token)
                 const loginInfo = {
-                    formData,
+                    ...payload,
                     access_token: res.data.access_token
                 };
                 dispatch(login(loginInfo))
-                navigate('/sport-commerce/home')
+                if(payload.role && loginInfo.role==="superadmin"){
+                    navigate('/admin/users')
+                }else if(loginInfo.role==="client"){
+                    navigate('/sport-commerce/home')
+                }
             }
         }).catch((e) => {
             Swal.fire({

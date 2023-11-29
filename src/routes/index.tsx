@@ -10,6 +10,8 @@ import AdminView from "../pages/AdminView.tsx";
 import UserManagerView from "../pages/UserManagerView.tsx";
 import ProductManagerView from "../pages/ProductManagerView.tsx";
 import BrandManagerView from "../pages/BrandsManagerView.tsx";
+import RequireAuthAdmin from "../components/RequireAuthAdmin.tsx";
+import EditProductPage from "../pages/EditProductPage.tsx";
 
 function Router() {
     return(<BrowserRouter>
@@ -19,11 +21,12 @@ function Router() {
             <Route path={'/register'} element={<Register/>}/>
             <Route path={'/sport-commerce'} element={<SportCommerce/>}>
                 <Route path={'home'} element={<Home/>}/>
-                <Route path={'product-view'} element={<ProductView/>}/>
+                <Route path={'product-view/:id'} element={<ProductView/>}/>
             </Route>
-            <Route path={'/admin'} element={<AdminView/>}>
+            <Route path={'/admin'} element={<RequireAuthAdmin><AdminView/></RequireAuthAdmin>}>
                 <Route path={'users'} element={<UserManagerView/>}/>
                 <Route path={'products'} element={<ProductManagerView/>}/>
+                <Route path={'products/:id'} element={<EditProductPage/>}/>
                 <Route path={'brands'} element={<BrandManagerView/>}/>
             </Route>
             <Route path={'/*'} element={<NotFound/>}/>

@@ -13,7 +13,7 @@ export const authSlice = createSlice({
         login: (state, action) => {
             state.value = {
                 username: action.payload.username,
-                password: action.payload.password,
+                role: action.payload.role,
                 access_token: action.payload.access_token
             }
         },

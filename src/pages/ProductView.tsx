@@ -1,29 +1,34 @@
 import '../App.css';
 import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {ProductInterfaces, StateSchemaProduct} from "../interfaces/Product/product.interfaces.ts";
+import {ProductInterfaces} from "../interfaces/Product/product.interfaces.ts";
 import {CRUDService, PRODUCTS} from "../config/axios.ts";
-import {setProductState} from "../features/product/productSlice.ts";
 import SimilarProductCard from "../components/SimilarProductsCard.tsx";
 import {insertProduct} from "../features/shoppingCar/shoppingCarSlice.ts";
 
 import Swal from "sweetalert2";
+import {useNavigate, useParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const ProductView = () => {
 
     const [product, setProduct] = useState<ProductInterfaces>();
     const [similarProducts, setSimilarProducts] = useState<ProductInterfaces[]>()
     const [isChange, setIsChange] = useState(false)
-    const productState: ProductInterfaces | null = useSelector((state: StateSchemaProduct) => state.product.value);
+    const navigate = useNavigate();
     const dispatch = useDispatch()
+    const { id } = useParams();
 
     useEffect(() => {
-        getCurrentProduct()
+        getProduct()
         getProducts()
     }, [isChange]);
 
-    const getCurrentProduct = () => {
-        productState && setProduct(productState)
+    const getProduct = () => {
+        if(id !== undefined){
+            CRUDService.getOne(PRODUCTS, id).then((product)=> {
+                setProduct(product)
+            })
+        }
     }
 
     const getProducts = () => {
@@ -33,7 +38,7 @@ const ProductView = () => {
     }
 
     const loadProduct = async (product: ProductInterfaces) => {
-        dispatch(setProductState(product))
+        navigate('../product-view/'+product.product_id)
         setIsChange(!isChange)
     }
 

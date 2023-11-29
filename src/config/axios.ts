@@ -19,46 +19,39 @@ export const injectStore = _store => {
 }
 
 instance.interceptors.request.use(config => {
-    config.headers.authorization = store.getState().auth.token
+    if(store.getState().auth.value !== null){
+        config.headers.authorization = store.getState().auth.value.access_token
+    }
     return config
 })
 
 export class CRUDService {
-
     static getAll(serviceRoute: string) {
-        const config = this.getHeaderConfig();
-
-        return instance.get(serviceRoute, config).then(res => res.data)
+        return instance.get(serviceRoute).then(res => res.data)
     }
 
     static getOne(serviceRoute: string, itemId: string) {
-
         const url = serviceRoute + '/' + itemId
-        const config = this.getHeaderConfig();
 
-        return axios.get(
-            url, config
+        return instance.get(
+            url
         ).then(res => res.data);
     }
 
-    static post(newItem: object, serviceRoute: string) {
-
-        const config = this.getHeaderConfig();
-
-
-        return axios.post(serviceRoute, newItem, config)
-            .then(res => res.data);
+    static post(serviceRoute: string,newItem: object) {
+        return instance.post(serviceRoute, newItem)
+            .then(res => res);
     }
 
-
-    static getHeaderConfig() {
-
-        const webToken = this.currentUser?.access_token;
-
-        const config = {
-            headers: {Authorization: 'Bearer ' + webToken}
-        };
-        return config;
+    static update(serviceRoute: string, itemId: string, updateItem: object) {
+        const url = serviceRoute + "/" + itemId
+        return instance.put(url, updateItem).then(res => res)
     }
 
+    static delete(serviceRoute: string, newItem: string){
+        const url = serviceRoute + '/' + newItem
+
+        return instance.delete(url)
+            .then((res)=>res.data)
+    }
 }
