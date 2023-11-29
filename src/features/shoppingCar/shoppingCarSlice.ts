@@ -5,6 +5,7 @@ import {ShoppingCarState} from "../../interfaces/ShoppingCar/shopping-car.interf
 const initialState: ShoppingCarState = {
     value: {
         products: [],
+        total: 0
     }
 }
 
@@ -25,7 +26,8 @@ export const shoppingCarSlice = createSlice({
                             }
                         }
                         return item
-                    })
+                    }),
+                    total: state.value.total + action.payload.price
                 }
             } else {
                 const newProduct = {
@@ -35,7 +37,8 @@ export const shoppingCarSlice = createSlice({
 
                 state.value = {
                     ...state,
-                    products: [...state.value.products, newProduct]
+                    products: [...state.value.products, newProduct],
+                    total: state.value.total + action.payload.price
                 }
             }
         },
@@ -46,7 +49,9 @@ export const shoppingCarSlice = createSlice({
             if (product) {
                 state.value = {
                     ...state,
+                    total: state.value.total - (product.quantity * product.product.price),
                     products: state.value.products.filter((item) => item.product.product_id !== action.payload.product_id)
+
                 }
             }
         },
@@ -65,7 +70,8 @@ export const shoppingCarSlice = createSlice({
                             }
                         }
                         return item
-                    })
+                    }),
+                    total: state.value.total - action.payload.price
                 }
             }
         }
@@ -73,7 +79,8 @@ export const shoppingCarSlice = createSlice({
         clearShoppingCar: (state) => {
             state.value = {
                 ...state,
-                products: []
+                products: [],
+                total: 0
             }
         }
     }
