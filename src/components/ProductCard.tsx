@@ -19,7 +19,7 @@ const ProductCard: React.FC<Props> = ({product, loadProduct}) => {
             <div className="card card-compact bg-base-100 shadow-xl" onClick={handleClick}>
                 <figure><img src={product.image_url} alt="Shoes" className={'h-52 w-full'}/></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{product.name}</h2>
+                    <h2 className="card-title line-clamp-1">{product.name}</h2>
                     <p className={'line-clamp-2'}>{product.description}</p>
                     <div className="card-actions justify-end">
                         <h3 className={'font-semibold text-lg'}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(product.price)}</h3>

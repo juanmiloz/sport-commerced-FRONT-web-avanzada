@@ -10,11 +10,14 @@ import AdminView from "../pages/AdminView.tsx";
 import UserManagerView from "../pages/UserManagerView.tsx";
 import ProductManagerView from "../pages/ProductManagerView.tsx";
 import BrandManagerView from "../pages/BrandsManagerView.tsx";
+import CheckoutView, {CheckoutMiddleware} from "../pages/CheckoutView.tsx";
+import PaymentStatus from "../pages/PaymentStatus.tsx";
+import {CheckoutWrapper} from "../components/CheckoutWrapper.tsx";
 import RequireAuthAdmin from "../components/RequireAuthAdmin.tsx";
 import EditProductPage from "../pages/EditProductPage.tsx";
 
 function Router() {
-    return(<BrowserRouter>
+    return (<BrowserRouter>
         <Routes>
             <Route path={'/landing'} element={<LandingPage/>}/>
             <Route path={'/signIn'} element={<SignIn/>}/>
@@ -22,6 +25,11 @@ function Router() {
             <Route path={'/sport-commerce'} element={<SportCommerce/>}>
                 <Route path={'home'} element={<Home/>}/>
                 <Route path={'product-view/:id'} element={<ProductView/>}/>
+                <Route path={'checkout-middleware'} element={<CheckoutMiddleware/>}/>
+                <Route path={'checkout'} element={<CheckoutWrapper/>}>
+                    <Route path={'finish'} element={<CheckoutView/>}/>
+                    <Route path={'complete'} element={<PaymentStatus/>}/>
+                </Route>
             </Route>
             <Route path={'/admin'} element={<RequireAuthAdmin><AdminView/></RequireAuthAdmin>}>
                 <Route path={'users'} element={<UserManagerView/>}/>

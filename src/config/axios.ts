@@ -1,4 +1,5 @@
 import axios from "axios";
+import {ToolkitStore} from "@reduxjs/toolkit/dist/configureStore";
 
 export const LOGIN: string = "auth/login"
 export const SIGN_UP: string = "auth/signUp"
@@ -6,15 +7,17 @@ export const PRODUCTS: string = "products"
 export const BRANDS: string = "brands"
 export const REVIEWS: string = "reviews"
 
+export const CHECKOUTS: string = "checkout"
+
 const instance = axios.create({
     baseURL: "http://localhost:3000/"
 })
 
 export default instance
 
-let store
+let store:ToolkitStore
 
-export const injectStore = _store => {
+export const injectStore = (_store:ToolkitStore) => {
     store = _store
 }
 

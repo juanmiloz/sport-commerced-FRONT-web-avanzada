@@ -17,7 +17,7 @@ const NavBarCustom = () => {
 
     return (
         <div>
-            <div className="navbar bg-app-200">
+            <div className="navbar bg-app-200 p-0">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">

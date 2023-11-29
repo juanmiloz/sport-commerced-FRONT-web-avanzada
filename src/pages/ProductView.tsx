@@ -4,7 +4,6 @@ import {ProductInterfaces} from "../interfaces/Product/product.interfaces.ts";
 import {CRUDService, PRODUCTS} from "../config/axios.ts";
 import SimilarProductCard from "../components/SimilarProductsCard.tsx";
 import {insertProduct} from "../features/shoppingCar/shoppingCarSlice.ts";
-
 import Swal from "sweetalert2";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
@@ -47,7 +46,6 @@ const ProductView = () => {
     const onAddToCart = (product: ProductInterfaces) => {
         dispatch(insertProduct(product))
         Swal.fire({
-            position: "top-end",
             icon: "success",
             title: "Tu producto ha sido añadido al carrito!",
             showConfirmButton: false,
@@ -56,7 +54,7 @@ const ProductView = () => {
     }
 
     return (
-        <div className="flex flex-col p-6 bg-white rounded-lg shadow-md">
+        <div className="flex flex-col p-6 bg-white shadow-md min-h-[calc(100vh-4rem)]">
             <div className="flex">
                 <div className="w-1/2">
                     <img src={product.image_url} className="w-full h-auto rounded-lg" alt={product.name}/>
@@ -75,7 +73,7 @@ const ProductView = () => {
                         <span className="rating">{product.calification}</span>
                     </div>
                     <button
-                        className="bg-app-700 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+                        className="btn btn-primary"
                         onClick={() => onAddToCart(product)}>
                         Añadir al carrito
                     </button>
