@@ -80,7 +80,7 @@ export const CheckoutView = () => {
 
             <div className="flex-col lg:flex-row p-10">
                 <div>
-                    <h1 className="text-5xl text-app-700 font-bold pb-10">Checkout!</h1>
+                    <h1 className="text-5xl text-app-700 font-bold pb-10">Verificar!</h1>
                 </div>
                 <div className={"grid grid-cols-3 gap-4"}>
                     <div className={"col-span-2"}>

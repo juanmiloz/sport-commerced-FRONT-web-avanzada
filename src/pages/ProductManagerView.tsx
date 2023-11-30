@@ -161,7 +161,7 @@ const ProductManagerView = () => {
             <div className={'flex justify-center'}>
                 {/* The button to open modal */}
                 <a href="#my_modal_8" className="btn btn-primary bg-app-100 text-white border-0 rounded-lg"
-                   onClick={getAllBrands}>open modal</a>
+                   onClick={getAllBrands}>Create Product</a>
                 {/* Put this part before </body> tag */}
                 <div className="modal" role="dialog" id="my_modal_8">
                     <div className="modal-box">

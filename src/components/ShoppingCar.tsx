@@ -46,7 +46,7 @@ const ShoppingCar: React.FC<Props> = ({children}) => {
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                 <div className="w-96 min-h-full bg-gray-200 text-base-content relative">
                     <div className={"sticky top-0 z-10 bg-app-200"}>
-                        <h3 className={"normal-case text-2xl text-white text-center py-5"}>Shopping Car</h3>
+                        <h3 className={"normal-case text-2xl text-white text-center py-5"}>Carrito de compras</h3>
                     </div>
                     <div className={"flex flex-col gap-3 px-4 mt-4"}>
                         {(products.length > 0) ? products.map((carElement: ShoppingCarProductInterface, idx: number) => {
@@ -97,7 +97,7 @@ const ShoppingCar: React.FC<Props> = ({children}) => {
                                 </div>
                                 <div className={"mb-4"}>
                                     <Link to={"/sport-commerce/checkout-middleware"}>
-                                        <button className={"btn btn-primary btn-block"} >Checkout</button>
+                                        <button className={"btn btn-primary btn-block"} >Pagar</button>
                                     </Link>
                                 </div>
                             </div>
