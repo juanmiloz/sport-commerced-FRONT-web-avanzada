@@ -16,18 +16,28 @@ const instance = axios.create({
 
 export default instance
 
-let store:ToolkitStore
+let store: ToolkitStore
 
-export const injectStore = (_store:ToolkitStore) => {
+export const injectStore = (_store: ToolkitStore) => {
     store = _store
 }
 
 instance.interceptors.request.use(config => {
-    if(store.getState().authState.value !== null){
+    if (store.getState().authState.value !== null) {
         config.headers.authorization = store.getState().authState.value.access_token
     }
     return config
 })
+
+instance.interceptors.response.use(response => {
+    return response
+}, function (error) {
+    if (error.response.status === 401) {
+        store.dispatch({type: "auth/logout"})
+    }
+    return Promise.reject(error);
+})
+
 
 export class CRUDService {
     static getAll(serviceRoute: string) {
@@ -43,7 +53,7 @@ export class CRUDService {
         ).then(res => res.data);
     }
 
-    static post(serviceRoute: string,newItem: object) {
+    static post(serviceRoute: string, newItem: object) {
         return instance.post(serviceRoute, newItem)
             .then(res => res);
     }
@@ -53,10 +63,10 @@ export class CRUDService {
         return instance.put(url, updateItem).then(res => res)
     }
 
-    static delete(serviceRoute: string, newItem: string){
+    static delete(serviceRoute: string, newItem: string) {
         const url = serviceRoute + '/' + newItem
 
         return instance.delete(url)
-            .then((res)=>res.data)
+            .then((res) => res.data)
     }
 }
