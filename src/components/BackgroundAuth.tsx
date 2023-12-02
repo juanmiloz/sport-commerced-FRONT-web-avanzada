@@ -11,9 +11,9 @@ const BackgroundAuth: React.FC<Props> = ({children, typeAuth}) => {
         <div className={'w-screen h-screen bg-gradient-to-r from-black to-app-600 flex items-center justify-center relative'}>
             <Link to={"/landing"}><img src={'/images/svg/sport-commerce.svg'} className={'absolute left-2 top-2 w-20'} alt={'logo'}/></Link>
             <div className={'text-white md:absolute sm:static top-0 right-0 flex py-2 px-4'}>
-                <p>{(typeAuth === "SignIn") ? 'Don\'t have an account? ' : (typeAuth === "Register") ? 'Do you already have an account? ' : ''}</p>
+                <p>{(typeAuth === "SignIn") ? 'No tiene una cuenta aun?' : (typeAuth === "Register") ? ' Ya tiene una cuenta?' : ''}</p>
                 <Link to={(typeAuth === "SignIn") ? '/register' : (typeAuth === "Register") ? '/signIn' : ''}>
-                    <p className={'underline ml-2'}>{(typeAuth === "SignIn") ? 'Sign up' : (typeAuth === "Register") ? 'Sign in' : ''}</p>
+                    <p className={'underline ml-2'}>{(typeAuth === "SignIn") ? 'Registrate' : (typeAuth === "Register") ? 'Ingresa' : ''}</p>
                 </Link>
             </div>
             <div className={'bg-white rounded-lg flex relative'}>

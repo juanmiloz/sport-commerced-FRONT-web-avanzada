@@ -26,7 +26,8 @@ const Home = () => {
     }
 
 
-    const images = ["/images/offers/carrousel1.jpg","/images/offers/carrousel2.jpg","/images/offers/carrousel3.jpg","/images/offers/carrousel4.jpg"]
+    const images = ["https://ciconceptstore.com/cdn/shop/files/BROWN_BAD_BUNNY_COMPUTER_SIZE.png?v=1699724484&width=1600",
+        "https://ciconceptstore.com/cdn/shop/files/BANNER_WEB_COMPUTER_SIZE_SAMBA_OG.png?v=1700046579&width=1600","/images/offers/carrousel3.jpg","/images/offers/carrousel4.jpg"]
 
     return (
         <div>

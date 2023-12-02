@@ -66,18 +66,18 @@ const Register = () => {
     return (
         <BackgroundAuth typeAuth={'Register'}>
             <form className={'flex flex-col h-full items-center justify-center'} onSubmit={handleSubmit}>
-                <h1 className={'text-4xl font-semibold font-epi'}>Register</h1>
+                <h1 className={'text-4xl font-semibold font-epi'}>Registrarse</h1>
                 <div className={'grid grid-cols-2 gap-4'}>
-                    <input type="text" placeholder="email" name="email" className="input input-bordered w-full max-w-xs mt-5" onChange={handleChange}/>
-                    <input type="text" placeholder="username" name="username" className="input input-bordered w-full max-w-xs mt-5" onChange={handleChange}/>
-                    <input type="text" placeholder="first name" name="firstName" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
-                    <input type="text" placeholder="last name" name="lastName" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
-                    <input type="text" placeholder="phone" name="phone" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
-                    <input type="text" placeholder="address" name="address" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
-                    <input type="password" placeholder="password" name="password" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
-                    <input type="password" placeholder="confirm password" name="confirmPassword" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
+                    <input type="text" placeholder="correo" name="email" className="input input-bordered w-full max-w-xs mt-5" onChange={handleChange}/>
+                    <input type="text" placeholder="usuario" name="username" className="input input-bordered w-full max-w-xs mt-5" onChange={handleChange}/>
+                    <input type="text" placeholder="nombre" name="firstName" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
+                    <input type="text" placeholder="apellido" name="lastName" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
+                    <input type="text" placeholder="telefono" name="phone" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
+                    <input type="text" placeholder="direccion" name="address" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
+                    <input type="password" placeholder="constraseña" name="password" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
+                    <input type="password" placeholder="confirmar contraseña" name="confirmPassword" className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
                 </div>
-                <button className={'btn bg-app-100 text-white border-0 mt-5 rounded-3xl w-full hover:bg-app-300'}>Register</button>
+                <button className={'btn bg-app-100 text-white border-0 mt-5 rounded-3xl w-full hover:bg-app-300'}>Registrame</button>
             </form>
         </BackgroundAuth>
     );

@@ -54,9 +54,9 @@ const UserManagerView = () => {
             <div className={'flex flex-col gap-4 items-center justify-center m-3'}>
                 <div className="stats shadow">
                     <div className="stat place-items-center">
-                        <div className="stat-title">USERS</div>
+                        <div className="stat-title">USUARIOS</div>
                         <div className="stat-value text-app-200">{users?.length}</div>
-                        <div className="stat-desc">Total Users</div>
+                        <div className="stat-desc">Total usuarios</div>
                     </div>
                 </div>
             </div>
@@ -66,15 +66,15 @@ const UserManagerView = () => {
                         <thead>
                         <tr>
                             {/*<th>Product_id</th>*/}
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Phone</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Password</th>
-                            <th>role</th>
+                            <th></th>
+                            <th>Correo</th>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
+                            <th>Contraseña</th>
+                            <th>Rol</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -93,12 +93,12 @@ const UserManagerView = () => {
                                 <td>{user.role}</td>
                                 <td>
                                     <button className="btn btn-error btn-xs text-white rounded-lg"
-                                            onClick={() => deleteProduct(user.user_id)}>delete
+                                            onClick={() => deleteProduct(user.user_id)}>Borrar
                                     </button>
                                 </td>
                                 <td>
                                     <button className="btn bg-app-200 btn-xs text-white"
-                                            onClick={() => updateProduct(user.user_id)}>edit
+                                            onClick={() => updateProduct(user.user_id)}>Editar
                                     </button>
                                 </td>
                             </tr>

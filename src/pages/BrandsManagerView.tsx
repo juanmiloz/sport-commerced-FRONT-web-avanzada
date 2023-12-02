@@ -91,9 +91,9 @@ const BrandManagerView = () => {
             <div className={'flex flex-col gap-4 items-center justify-center m-3'}>
                 <div className="stats shadow">
                     <div className="stat place-items-center">
-                        <div className="stat-title">BRANDS</div>
+                        <div className="stat-title">MARCAS</div>
                         <div className="stat-value text-app-200">{brands?.length}</div>
-                        <div className="stat-desc">Total brands</div>
+                        <div className="stat-desc">Total marcas</div>
                     </div>
                 </div>
             </div>
@@ -102,8 +102,8 @@ const BrandManagerView = () => {
                     <table className="table table-xs max-w-lg ">
                         <thead>
                         <tr>
-                            <th>Brand_id</th>
-                            <th>Name</th>
+                            <th>id</th>
+                            <th>Nombre</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -115,12 +115,12 @@ const BrandManagerView = () => {
                                 <td>{brand.name}</td>
                                 <td>
                                     <button className="btn btn-error btn-xs text-white rounded-lg"
-                                            onClick={() => deleteProduct(brand.brand_id)}>delete
+                                            onClick={() => deleteProduct(brand.brand_id)}>borrar
                                     </button>
                                 </td>
                                 <td>
                                     <button className="btn bg-app-200 btn-xs text-white"
-                                            onClick={() => updateProduct(brand.brand_id)}>edit
+                                            onClick={() => updateProduct(brand.brand_id)}>editar
                                     </button>
                                 </td>
                             </tr>

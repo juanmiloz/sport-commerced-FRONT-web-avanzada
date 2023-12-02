@@ -9,7 +9,7 @@ function LandingPage() {
                     <a className="ml-4 font-medium text-xl text-white">{APP_NAME}</a>
                 </div>
                 <div className="navbar-end mr-3">
-                    <Link to={'/signIn'}><button className="btn bg-app-600 border-0 rounded-3xl hover:bg-app-300 text-white">Sign in</button></Link>
+                        <Link to={'/signIn'}><button className="btn bg-app-600 border-0 rounded-3xl hover:bg-app-300 text-white">Ingresar</button></Link>
                 </div>
             </div>
             <div className={'relative'}>

@@ -119,14 +119,14 @@ const ProductManagerView = () => {
                     <table className="table table-xs">
                         <thead>
                         <tr>
-                            <th>Product_id</th>
-                            <th>Name</th>
-                            <th>Subtitle</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Qualification</th>
-                            <th>Brand_id</th>
-                            <th>Image_url</th>
+                            <th>id</th>
+                            <th>Nombre</th>
+                            <th>Subtitulo</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Calificación</th>
+                            <th>id marca</th>
+                            <th>direccion de la imagen</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -144,12 +144,12 @@ const ProductManagerView = () => {
                                 <td>{product.image_url}</td>
                                 <td>
                                     <button className="btn btn-error btn-xs text-white rounded-lg"
-                                            onClick={() => deleteProduct(product.product_id)}>delete
+                                            onClick={() => deleteProduct(product.product_id)}>borrar
                                     </button>
                                 </td>
                                 <td>
                                     <button className="btn bg-app-200 btn-xs text-white"
-                                            onClick={() => updateProduct(product.product_id)}>edit
+                                            onClick={() => updateProduct(product.product_id)}>editar
                                     </button>
                                 </td>
                             </tr>

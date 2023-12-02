@@ -59,14 +59,13 @@ const SignIn = () => {
     return (
         <BackgroundAuth typeAuth={'SignIn'}>
             <form className={'flex flex-col h-full items-center justify-center'} onSubmit={handleSubmit}>
-                <h1 className={'text-4xl font-semibold font-epi'}>Sign In</h1>
-                <input value={formData.username} name={'username'} type="text" placeholder="username"
+                <h1 className={'text-4xl font-semibold font-epi'}>Ingresar</h1>
+                <input value={formData.username} name={'username'} type="text" placeholder="usuario"
                        className="input input-bordered w-full max-w-xs mt-5" onChange={handleChange}/>
-                <input value={formData.password} name={'password'} type="password" placeholder="password"
+                <input value={formData.password} name={'password'} type="password" placeholder="contraseña"
                        className="input input-bordered w-full max-w-xs mt-3" onChange={handleChange}/>
                 <button type={'submit'}
-                        className={'btn bg-app-100 text-white border-0 mt-5 rounded-3xl w-full hover:bg-app-300'}>Sign
-                    In
+                        className={'btn bg-app-100 text-white border-0 mt-5 rounded-3xl w-full hover:bg-app-300'}>Ingresar
                 </button>
             </form>
         </BackgroundAuth>
