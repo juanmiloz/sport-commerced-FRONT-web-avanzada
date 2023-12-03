@@ -7,6 +7,7 @@ export const PRODUCTS: string = "products"
 export const USERS: string = "users"
 export const BRANDS: string = "brands"
 export const REVIEWS: string = "reviews"
+export const PRODUCT_REVIEWS: string = "reviews/product"
 
 export const CHECKOUTS: string = "checkout"
 
@@ -44,8 +45,13 @@ export class CRUDService {
         return instance.get(serviceRoute).then(res => res.data)
     }
 
+    static getAllOf(serviceRoute: string, item_id: string) {
+        const url: string = serviceRoute + "/" + item_id
+        return instance.get(url).then(res => res.data)
+    }
+
     static getOne(serviceRoute: string, itemId: string) {
-        console.log('sale2')
+
         const url = serviceRoute + '/' + itemId
 
         return instance.get(
@@ -54,6 +60,7 @@ export class CRUDService {
     }
 
     static post(serviceRoute: string, newItem: object) {
+        console.log(newItem)
         return instance.post(serviceRoute, newItem)
             .then(res => res);
     }

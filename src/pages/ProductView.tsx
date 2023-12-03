@@ -1,21 +1,28 @@
 import '../App.css';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ProductInterfaces} from "../interfaces/Product/product.interfaces.ts";
-import {CRUDService, PRODUCTS} from "../config/axios.ts";
+import {CRUDService, PRODUCT_REVIEWS, PRODUCTS, REVIEWS} from "../config/axios.ts";
 import SimilarProductCard from "../components/SimilarProductsCard.tsx";
 import {insertProduct} from "../features/shoppingCar/shoppingCarSlice.ts";
 import Swal from "sweetalert2";
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import {ReviewFormInterface, ReviewInterface} from "../interfaces/Review/review.interfaces.ts";
+import Comment from "../components/Comment.tsx";
+import useJwtHook from "../hooks/jwt.hook.ts";
+import {JwtPayload} from "../interfaces/Auth/auth.interfaces.ts";
 
 const ProductView = () => {
 
     const [product, setProduct] = useState<ProductInterfaces>();
+    const [reviews, setReviews] = useState<ReviewInterface[]>();
+    const [comment, setComment] = useState<string>();
     const [similarProducts, setSimilarProducts] = useState<ProductInterfaces[]>()
     const [isChange, setIsChange] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const { id } = useParams();
+    const {id} = useParams();
+    const {decryptJwt} = useJwtHook()
 
     useEffect(() => {
         getProduct()
@@ -23,9 +30,18 @@ const ProductView = () => {
     }, [isChange]);
 
     const getProduct = () => {
-        if(id !== undefined){
-            CRUDService.getOne(PRODUCTS, id).then((product)=> {
+        if (id !== undefined) {
+            CRUDService.getOne(PRODUCTS, id).then((product) => {
                 setProduct(product)
+                getReviews()
+            })
+        }
+    }
+
+    const getReviews = () => {
+        if (id !== undefined) {
+            CRUDService.getAllOf(PRODUCT_REVIEWS, id).then((reviewsList) => {
+                setReviews(reviewsList)
             })
         }
     }
@@ -37,7 +53,7 @@ const ProductView = () => {
     }
 
     const loadProduct = async (product: ProductInterfaces) => {
-        navigate('../product-view/'+product.product_id)
+        navigate('../product-view/' + product.product_id)
         setIsChange(!isChange)
     }
 
@@ -52,6 +68,73 @@ const ProductView = () => {
             timer: 1000
         });
     }
+
+    const renderComments = () => {
+        return (!reviews || reviews.length === 0) ?
+            "No hay comentarios de este producto"
+            :
+            reviews.map((review, index) => (
+                <Comment review={review} key={index}/>
+            ))
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+        setComment(e.target.value)
+    }
+
+    const handleSubmitReview = () => {
+        if (comment && comment !== "") {
+            const currentDate = new Date()
+            Swal.fire({
+                title: "Rate",
+                input: "range",
+                inputLabel: "insert your rate",
+                inputAttributes: {
+                    min: "0",
+                    max: "5",
+                    step: "0.1"
+                },
+                showCancelButton: true,
+                confirmButtonText: "Publicar",
+                showLoaderOnConfirm: true,
+                preConfirm: async (rate) => {
+                    try {
+                        const review = await buildReview(currentDate, comment, rate)
+                        console.log(review)
+                        if (review) {
+                            return await CRUDService.post(REVIEWS, review)
+                        }else{
+                            Swal.showValidationMessage('Porfavor loguearse para publicar');
+                        }
+                    } catch (error) {
+                        Swal.showValidationMessage(`Fallo en la solicitud: ${error}`);
+                    }
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Comentario publicado exitosamente',
+                    });
+                }
+            });
+        }
+    }
+
+    const buildReview = async (date: Date, commentValue: string, starValue: number) => {
+        const payload: JwtPayload | null = await decryptJwt()
+        if (payload !== null) {
+            const review: ReviewFormInterface = {
+                user_id: parseFloat(payload.user_id),
+                product_id: product.product_id,
+                comment: commentValue,
+                stars: +starValue,
+                review_date: date,
+            }
+            return review
+        }
+    }
+
 
     return (
         <div className="flex flex-col p-6 bg-white shadow-md min-h-[calc(100vh-4rem)]">
@@ -79,13 +162,26 @@ const ProductView = () => {
                     </button>
                 </div>
             </div>
-            <div className="border-dotted  border-t border-gray-300 my-6"></div>
+            <div className="divider"></div>
             <div className="mt-1">
                 <h2 className="text-lg font-semibold mb-2 text-app-700">Productos Similares</h2>
                 <div className="similar-products-carousel flex overflow-x-auto justify-center">
                     {similarProducts && similarProducts.map((similarProduct: ProductInterfaces, index) => (
                         <SimilarProductCard product={similarProduct} loadProduct={loadProduct} key={index}/>
                     ))}
+                </div>
+            </div>
+            <div className="divider"></div>
+            <div>
+                {renderComments()}
+            </div>
+            <div className="divider"></div>
+            <div>
+                <div className={'font-extrabold text-xl'}>Agregar comentario</div>
+                <textarea className="my-4 textarea textarea-bordered w-full" placeholder="Review"
+                          onChange={handleChange}></textarea>
+                <div className={'flex justify-end'}>
+                    <button className="btn btn-primary" onClick={handleSubmitReview}>Publicar comentario</button>
                 </div>
             </div>
         </div>
